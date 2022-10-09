@@ -1,25 +1,36 @@
-import logo from './logo.svg';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Outer />
     </div>
   );
+}
+
+function Outer(){
+  const message = "Hello, world!"
+  return (
+    <div className="Outer">
+      <Middle message={ message } />
+    </div>
+  )
+}
+
+function Middle({ message }){
+  return (
+    <div className="Middle">
+      <Inner message={ message } />
+    </div>
+  )
+}
+
+function Inner({ message }){
+  return (
+    <div className="Inner">
+      <p>{ message }</p>
+    </div>
+  )
 }
 
 export default App;
