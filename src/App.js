@@ -1,4 +1,5 @@
 import './App.css';
+import {createContext, useContext} from 'react';
 
 function App() {
   return (
@@ -8,24 +9,29 @@ function App() {
   );
 }
 
+const context = createContext()
+
 function Outer(){
   const message = "Hello, world!"
   return (
     <div className="Outer">
-      <Middle message={ message } />
+      <context.Provider value={message}>
+        <Middle />
+      </context.Provider>
     </div>
   )
 }
 
-function Middle({ message }){
+function Middle(){
   return (
     <div className="Middle">
-      <Inner message={ message } />
+      <Inner />
     </div>
   )
 }
 
-function Inner({ message }){
+function Inner(){
+  const message = useContext(context)
   return (
     <div className="Inner">
       <p>{ message }</p>
